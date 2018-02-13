@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">About Compenent</div>
+    <div class="panel-body">
+
+      <div>
+        <h3>Infos:</h3>
+        <ul class="list-group">
+          <li class="list-group-item">Nom : <strong>{{infos.nom}}</strong> </li>
+          <li class="list-group-item">Email : <strong>{{infos.email}}</strong> </li>
+          <li class="list-group-item">Tele : <strong>{{infos.tel}}</strong> </li>
+        </ul>
+      </div>
+
+      <div>
+        <form #f="ngForm" (ngSubmit)="onAddCommentaire(f.value)">
+        <div class="form-group">
+          <label class="control-label">Message:</label>
+          <input type="text" required="" name="message"  ngModel [(ngModel)]="commentaire.message" >
+          <button  [disabled]="!f.valid" class="btn btn-primary" type="submit">Ajouter Commantaire</button>
+        </div>
+        </form>
+          <!--
+          <div class="form-group">
+          <label class="control-label">Message:</label>
+          <input type="text" [(ngModel)]="commentaire.message" >
+          <button  [disabled]="!commentaire.message" class="btn btn-primary" (click)="onAddCommentaire()">Ajouter Commantaire</button>
+          </div>
+           -->
+      </div>
+
+      <div>
+        <h3>Commantaires:</h3>
+        <ul class="list-group">
+          <li *ngFor="let c of comments" class="list-group-item">
+            {{c.message}}
+            <span class="badge">{{c.date|date:'dd/MM/yyyy HH:mm:ss'}}</span>
+          </li>
+        </ul>
+      </div>
+
+
+
+
+
+    </div>
+  </div>
+
+</div>

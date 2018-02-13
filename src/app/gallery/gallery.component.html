@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">Gallery Component</div>
+    <div class="panel-body">
+      <form #f="ngForm" (ngSubmit)="onSearch(f.value)">
+        <div class="form-group">
+          <label>Mot clé:</label>
+          <input type="text" name="motCle" ngModel required [ngModel]="motCle">
+          <button type="submit" class="btn btn-primary">Chercher</button>
+        </div>
+      </form>
+     <!-- <div *ngIf="pagePhotos"> // si pagephotos is difini ,not null ou vous mette ? comme la suite :-->
+     <div class="row">
+      <div *ngFor="let p of pagePhotos?.hits" class="col-md-3">
+        <div class="panel panel-primary cadre">
+          <div class="panel-heading"><img src="{{p.userImageURL}}" class="img-circle" width="50" height="50"> User: {{p.user}}</div>
+          <div class="panel-body">
+            <img src="{{p.previewURL}}">
+            <div>
+              <p>{{p.tags}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+    <!--  </div> -->
+      <div class="row">
+        <ul class="nav nav-pills">
+          <li [ngClass]="{'active':currentPage==(i+1)}" class="clickable" *ngFor="let page of pages;let i=index"> <!--   ne fonctionne pas -->
+            <a (click)="goToPage(i)">{{i}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
